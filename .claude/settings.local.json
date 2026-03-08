@@ -1,0 +1,10 @@
+{
+  "enabledMcpjsonServers": [
+    "jcodemunch"
+  ],
+  "permissions": {
+    "allow": [
+      "Bash(rtk proxy:*)"
+    ]
+  }
+}
