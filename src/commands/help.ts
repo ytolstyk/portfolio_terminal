@@ -10,6 +10,7 @@ const COMMANDS = [
   ['echo <text>', 'echo text to output'],
   ['history', 'show command history'],
   ['clear', 'clear the terminal output'],
+  ['exit', 'close the terminal and reveal portfolio'],
   ['help', 'show this help message'],
 ]
 

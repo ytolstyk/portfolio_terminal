@@ -9,6 +9,7 @@ import { echo } from './echo'
 import { history } from './history'
 import { help } from './help'
 import { clear } from './clear'
+import { exit } from './exit'
 
 export function dispatch(raw: string, state: TerminalState): CommandResult {
   const trimmed = raw.trim()
@@ -36,6 +37,8 @@ export function dispatch(raw: string, state: TerminalState): CommandResult {
       return help()
     case 'clear':
       return clear()
+    case 'exit':
+      return exit()
     default:
       return {
         lines: [

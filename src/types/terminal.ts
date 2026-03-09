@@ -12,6 +12,7 @@ export interface Project {
   description: string
   language: string
   url: string
+  github?: string
   readme: string
   year: number
   tags: string[]
@@ -21,6 +22,7 @@ export interface CommandResult {
   lines: Omit<OutputLine, 'id'>[]
   navigationTarget?: string | null
   shouldClear?: boolean
+  shouldExit?: boolean
   setGrepFilter?: string | null
   updatePath?: string
 }

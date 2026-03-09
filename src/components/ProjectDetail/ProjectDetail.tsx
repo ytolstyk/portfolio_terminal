@@ -3,6 +3,7 @@ import { useEffect, useCallback } from 'react'
 import { useTerminalContext } from '@/context/TerminalContext'
 import { getProject } from '@/data/projects'
 import { ScrollArea } from '@/components/ui/scroll-area'
+import { renderWithLinks } from '@/lib/renderWithLinks'
 
 interface Props {
   name: string
@@ -69,13 +70,13 @@ export function ProjectDetail({ name }: Props) {
               &nbsp;&nbsp;Language: {project.language}&nbsp;&nbsp;|&nbsp;&nbsp;Year: {project.year}
             </div>
             <div className="output-line output-line--output">
-              &nbsp;&nbsp;GitHub: {project.url}
+              &nbsp;&nbsp;GitHub: {renderWithLinks(project.github ?? project.url)}
             </div>
             <div className="output-line output-line--output">{separator}</div>
             <div className="output-line output-line--output">&nbsp;</div>
             {project.readme.split('\n').map((line, i) => (
               <div key={i} className="output-line output-line--output">
-                {line || '\u00A0'}
+                {line ? renderWithLinks(line) : '\u00A0'}
               </div>
             ))}
             <div className="output-line output-line--output">&nbsp;</div>

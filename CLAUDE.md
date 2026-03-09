@@ -18,6 +18,7 @@ No test runner is configured.
 **Stack:** React 19, TypeScript 5.9, Vite 7, plain CSS (no preprocessor)
 
 **Entry points:**
+
 - `index.html` → `src/main.tsx` (React root via `createRoot`)
 - `src/App.tsx` — root component
 
@@ -28,3 +29,10 @@ No test runner is configured.
 **Styling:** Global styles in `src/index.css`, component styles co-located (e.g. `src/App.css`). Dark mode via `prefers-color-scheme`.
 
 **State:** React built-in hooks only — no external state library.
+
+## Validations
+
+Run these commands. Ensure no errors before submitting.
+
+1. **Lint** `npm run lint`
+2. **Types** `npm run type-check`

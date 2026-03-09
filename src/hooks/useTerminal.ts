@@ -1,11 +1,13 @@
 import { useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useTerminalContext } from '@/context/TerminalContext'
+import { useAppContext } from '@/context/AppContext'
 import { dispatch as dispatchCommand } from '@/commands/index'
 import type { OutputLine } from '@/types/terminal'
 
 export function useTerminal() {
   const { state, dispatch } = useTerminalContext()
+  const { setTerminalVisible } = useAppContext()
   const navigate = useNavigate()
 
   const executeCommand = useCallback(
@@ -38,6 +40,13 @@ export function useTerminal() {
         return
       }
 
+      if (result.shouldExit) {
+        const exitLines: OutputLine[] = result.lines.map((l) => ({ ...l, id: crypto.randomUUID() }))
+        if (exitLines.length > 0) dispatch({ type: 'PUSH_LINES', lines: exitLines })
+        setTimeout(() => setTerminalVisible(false), 400)
+        return
+      }
+
       if (result.setGrepFilter !== undefined) {
         dispatch({ type: 'SET_GREP_FILTER', filter: result.setGrepFilter })
       }
@@ -59,7 +68,7 @@ export function useTerminal() {
         navigate(result.navigationTarget)
       }
     },
-    [state, dispatch, navigate]
+    [state, dispatch, navigate, setTerminalVisible]
   )
 
   return { state, executeCommand }
