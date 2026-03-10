@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAppContext } from '@/context/AppContext'
 import './Portfolio.css'
@@ -9,36 +10,83 @@ const SKILLS = [
   'Vite', 'REST APIs', 'Git',
 ]
 
+const EXP_COLORS = [
+  { hex: '#fbbf24', rgb: '251,191,36' },   // amber
+  { hex: '#22d3ee', rgb: '34,211,238' },   // cyan
+  { hex: '#fb7185', rgb: '251,113,133' },  // rose
+  { hex: '#34d399', rgb: '52,211,153' },   // emerald
+  { hex: '#fb923c', rgb: '251,146,60' },   // orange
+]
+
 const EXPERIENCE = [
   {
     company: 'Mixpanel',
-    role: 'Senior Software Engineer',
+    role: 'Senior Full-Stack Engineer',
     period: 'Jan 2024 – Apr 2025',
-    description: 'Built and maintained analytics product features across the full stack. Improved query performance and worked on data visualization tooling.',
+    description: 'Built and maintained analytics product features across the full stack. Led warehouse connectors project connecting major data warehouses.',
+    colorIdx: 0,
+    companyBlurb: 'Mixpanel (mixpanel.com) is an events-based data analytics platform.',
+    bullets: [
+      'Led warehouse connectors project — a web portal for customers to connect Databricks, Redshift, BigQuery, and Snowflake warehouses to Mixpanel to import data. Responsible for the full stack: React, Python/Django, MySQL.',
+      'Warehouse connectors brings in 7% of total revenue with over 5,000 successful event imports.',
+      'Designed and coded test imports feature, letting users safely import small datasets into Mixpanel for validation.',
+      'Worked closely with infrastructure engineers, product, and design to scope and ship new features.',
+    ],
   },
   {
     company: 'Affirm',
     role: 'Senior Software Engineer',
     period: 'Mar 2021 – Oct 2023',
     description: 'Developed merchant-facing checkout integrations and internal tools. Worked on Python/Django backend services and React frontends.',
+    colorIdx: 1,
+    companyBlurb: 'Affirm (affirm.com) leads the Buy Now Pay Later space.',
+    bullets: [
+      'Built the brand new savings account experience on web, adding millions of dollars in assets.',
+      'Created a promotion module to offer incentives to customers, increasing gross merchandise volume by an average of 26%.',
+      'Led a team of 3 engineers building internal tools to help remediate issues for 200k customers onboarded to rewards programs.',
+      'Worked closely with product and design to build four web projects on the main shop feed that generates 30% of company revenue.',
+    ],
   },
   {
     company: 'Shape Security',
-    role: 'Software Engineer',
+    role: 'Senior Software Engineer',
     period: 'Mar 2019 – Oct 2020',
     description: 'Worked on bot-detection and web security infrastructure. Built dashboards and tooling for monitoring threat traffic.',
+    colorIdx: 2,
+    companyBlurb: 'Shape Security — a leader in bot-detection and fraud-prevention security.',
+    bullets: [
+      'Created and maintained a React-based style and component library adopted by three different products.',
+      'Packaged an internal web-based IDE tool and integrated it into a customer-facing management application, letting customers safely modify config files.',
+      'Introduced engineering lifecycle processes: standardized design docs, code reviews, testing, standups, and retrospectives.',
+      'Added error logging to three products, providing visibility into issues in production. Mentored four junior engineers.',
+    ],
   },
   {
     company: 'Manifold Technology',
-    role: 'Software Engineer',
+    role: 'Senior Software Engineer',
     period: 'Jan 2018 – Jan 2019',
     description: 'Built blockchain-related developer tooling and web interfaces for a fintech startup.',
+    colorIdx: 3,
+    companyBlurb: 'Manifold Technology — blockchain-based transaction infrastructure and applications for enterprises.',
+    bullets: [
+      'Responsible for the entire web front-end — from styling to deployment.',
+      'Built and maintained scalable web applications including a commodities exchange app, influencer platform, and merchant rewards portal.',
+      'Implemented the front-end workflow, style guide, linters, and deployment process.',
+      'Ensured product quality with automated unit and integration tests.',
+    ],
   },
   {
     company: 'Wealthfront',
     role: 'Software Engineer',
     period: 'Nov 2014 – Sep 2017',
     description: 'Developed features for the automated investing platform. Worked on the React/JavaScript frontend and Java backend services.',
+    colorIdx: 4,
+    companyBlurb: 'Wealthfront (wealthfront.com) is an online financial advisor and automated investment service.',
+    bullets: [
+      'Built the college savings accounts product in a team of 4 and launched it on schedule, adding millions in investments in the first month.',
+      'Led, coded, and launched the Advanced Indexing project, providing custom client experiences at different investment tiers.',
+      'Used data analysis to improve the signup flow, increasing traffic by 14%.',
+    ],
   },
 ]
 
@@ -78,14 +126,58 @@ const INTERESTS = [
   '🎸 Guitar', '📷 Photography', '🎨 Painting',
 ]
 
+type ExpEntry = typeof EXPERIENCE[0]
+
+function ExperienceModal({ exp, onClose }: { exp: ExpEntry; onClose: () => void }) {
+  const color = EXP_COLORS[exp.colorIdx]
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    document.addEventListener('keydown', handleKey)
+    return () => document.removeEventListener('keydown', handleKey)
+  }, [onClose])
+
+  return (
+    <div className="exp-modal-backdrop" onClick={onClose}>
+      <div
+        className="exp-modal"
+        style={{ borderTopColor: color.hex }}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="exp-modal-header" style={{ borderLeftColor: color.hex }}>
+          <div className="exp-modal-titles">
+            <span className="exp-modal-company" style={{ color: color.hex }}>{exp.company}</span>
+            <span className="exp-modal-role">{exp.role}</span>
+            <span className="exp-modal-period">{exp.period}</span>
+          </div>
+          <button className="exp-modal-close" onClick={onClose} aria-label="Close">×</button>
+        </div>
+        <div className="exp-modal-body">
+          <p className="exp-modal-blurb">{exp.companyBlurb}</p>
+          <ul className="exp-modal-bullets">
+            {exp.bullets.map((b, i) => (
+              <li key={i} className="exp-modal-bullet">
+                <span className="exp-modal-dot" style={{ background: color.hex, boxShadow: `0 0 6px rgba(${color.rgb},0.6)` }} />
+                {b}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 export function Portfolio() {
   const navigate = useNavigate()
   const { setTerminalVisible } = useAppContext()
+  const [activeExp, setActiveExp] = useState<ExpEntry | null>(null)
 
   const openTerminal = () => setTerminalVisible(true)
 
   return (
     <div className="portfolio" id="portfolio-top">
+      {activeExp && <ExperienceModal exp={activeExp} onClose={() => setActiveExp(null)} />}
       {/* ── Hero ── */}
       <section className="hero-section">
         <div className="portfolio-container">
@@ -173,7 +265,13 @@ export function Portfolio() {
                   <div className="timeline-dot" />
                   <div className="timeline-line" />
                 </div>
-                <div className="experience-card">
+                <div
+                  className="experience-card"
+                  role="button"
+                  tabIndex={0}
+                  onClick={() => setActiveExp(exp)}
+                  onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setActiveExp(exp)}
+                >
                   <div className="exp-header">
                     <span className="exp-company">{exp.company}</span>
                     <span className="exp-period">{exp.period}</span>

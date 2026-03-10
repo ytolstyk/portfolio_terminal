@@ -593,6 +593,141 @@
   filter: brightness(1.15);
 }
 
+/* ─── Experience Modal ─── */
+@keyframes backdropFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes modalSlideUp {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.exp-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: backdropFadeIn 0.2s ease;
+}
+
+.exp-modal {
+  background: #0e0e1a;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 3px solid;
+  border-radius: 12px;
+  max-width: 620px;
+  width: 100%;
+  max-height: 85vh;
+  overflow-y: auto;
+  animation: modalSlideUp 0.22s ease;
+}
+
+.exp-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1.5rem 1.5rem 1.25rem;
+  border-left: 3px solid;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  margin-left: -1px;
+}
+
+.exp-modal-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.exp-modal-company {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.exp-modal-role {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+
+.exp-modal-period {
+  font-size: 0.75rem;
+  color: #475569;
+  font-family: 'JetBrains Mono', monospace;
+}
+
+.exp-modal-close {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #64748b;
+  border-radius: 6px;
+  width: 32px;
+  height: 32px;
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exp-modal-close:hover {
+  color: #e2e8f0;
+  border-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.exp-modal-body {
+  padding: 1.25rem 1.5rem 1.75rem;
+}
+
+.exp-modal-blurb {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-style: italic;
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
+
+.exp-modal-bullets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.exp-modal-bullet {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  font-size: 0.875rem;
+  color: #94a3b8;
+  line-height: 1.65;
+}
+
+.exp-modal-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 0.45em;
+}
+
+.experience-card {
+  cursor: pointer;
+}
+
 /* ─── Responsive ─── */
 @media (max-width: 640px) {
   .hero-inner {
