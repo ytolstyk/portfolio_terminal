@@ -64,6 +64,7 @@ export function TerminalProvider({ children }: { children: ReactNode }) {
   )
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useTerminalContext() {
   const ctx = useContext(TerminalContext)
   if (!ctx) throw new Error('useTerminalContext must be used within TerminalProvider')

@@ -1,10 +1,27 @@
 /* ─── Portfolio project page ─── */
 .ppp-shell {
   min-height: 100vh;
-  background: #0a0a0a;
+  background: #080810;
   color: #e2e8f0;
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
   overflow-y: auto;
+  position: relative;
+}
+
+.ppp-shell::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 40% at 20% 15%, rgba(167, 139, 250, 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 45% 35% at 80% 80%, rgba(34, 211, 238, 0.06) 0%, transparent 55%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ppp-shell > * {
+  position: relative;
+  z-index: 1;
 }
 
 .ppp-container {
@@ -26,17 +43,20 @@
 
 .ppp-title {
   font-size: 2.25rem;
-  font-weight: 800;
-  color: #f8fafc;
-  letter-spacing: -0.02em;
+  font-weight: 900;
+  letter-spacing: -0.03em;
   margin-bottom: 0.6rem;
   line-height: 1.1;
+  background: linear-gradient(135deg, #f8fafc 0%, #a78bfa 50%, #22d3ee 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .ppp-desc {
   font-size: 1.05rem;
   color: #94a3b8;
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 .ppp-meta {
@@ -52,9 +72,9 @@
 }
 
 .ppp-meta-label {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   color: #475569;
 }
@@ -79,20 +99,21 @@
 }
 
 .ppp-readme {
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(167, 139, 250, 0.12);
   border-radius: 8px;
   overflow: hidden;
+  background: rgba(255, 255, 255, 0.015);
 }
 
 .ppp-readme-label {
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #475569;
+  color: #a78bfa;
   padding: 0.75rem 1.25rem;
-  background: rgba(255, 255, 255, 0.02);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background: rgba(167, 139, 250, 0.06);
+  border-bottom: 1px solid rgba(167, 139, 250, 0.1);
 }
 
 .ppp-readme-content {
@@ -117,10 +138,10 @@
 
 .ppp-error {
   font-size: 1.1rem;
-  color: #ef4444;
+  color: #fb7185;
 }
 
-/* Re-use Portfolio button styles */
+/* ─── Buttons ─── */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -128,50 +149,58 @@
   padding: 0.55rem 1.2rem;
   border-radius: 6px;
   font-size: 0.875rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   border: none;
   transition: all 0.2s ease;
   text-decoration: none;
   font-family: inherit;
+  letter-spacing: 0.01em;
 }
 
 .btn-primary {
-  background: #6366f1;
+  background: linear-gradient(135deg, #7c3aed, #2563eb);
   color: #fff;
+  box-shadow: 0 2px 15px rgba(124, 58, 237, 0.35);
 }
 
 .btn-primary:hover {
-  background: #4f46e5;
+  background: linear-gradient(135deg, #6d28d9, #1d4ed8);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.5);
 }
 
 .btn-outline {
   background: transparent;
   color: #94a3b8;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .btn-outline:hover {
-  border-color: #6366f1;
-  color: #e2e8f0;
-  background: rgba(99, 102, 241, 0.08);
+  border-color: #22d3ee;
+  color: #22d3ee;
+  background: rgba(34, 211, 238, 0.06);
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.1);
 }
 
 .btn-ghost {
   background: transparent;
-  color: #6366f1;
-  border: 1px solid rgba(99, 102, 241, 0.3);
+  color: #34d399;
+  border: 1px solid rgba(52, 211, 153, 0.35);
 }
 
 .btn-ghost:hover {
-  background: rgba(99, 102, 241, 0.1);
+  background: rgba(52, 211, 153, 0.08);
+  border-color: #34d399;
+  box-shadow: 0 0 15px rgba(52, 211, 153, 0.15);
 }
 
 .project-tag {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   padding: 0.2rem 0.55rem;
   border-radius: 3px;
-  background: rgba(99, 102, 241, 0.08);
-  color: #818cf8;
-  border: 1px solid rgba(99, 102, 241, 0.15);
+  background: rgba(167, 139, 250, 0.1);
+  color: #a78bfa;
+  border: 1px solid rgba(167, 139, 250, 0.2);
+  font-weight: 500;
 }

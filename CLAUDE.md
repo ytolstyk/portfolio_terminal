@@ -34,5 +34,5 @@ No test runner is configured.
 
 Run these commands. Ensure no errors before submitting.
 
-1. **Lint** `npm run lint`
-2. **Types** `npm run type-check`
+1. **Lint** `rtk lint`
+2. **Types** `rtk tsc`
