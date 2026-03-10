@@ -13,8 +13,8 @@
   position: fixed;
   inset: 0;
   background:
-    radial-gradient(ellipse 50% 40% at 20% 15%, rgba(167, 139, 250, 0.07) 0%, transparent 60%),
-    radial-gradient(ellipse 45% 35% at 80% 80%, rgba(34, 211, 238, 0.06) 0%, transparent 55%);
+    radial-gradient(ellipse 50% 40% at 20% 15%, rgba(var(--proj-r1), 0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 45% 35% at 80% 80%, rgba(var(--proj-r2), 0.06) 0%, transparent 55%);
   pointer-events: none;
   z-index: 0;
 }
@@ -47,7 +47,7 @@
   letter-spacing: -0.03em;
   margin-bottom: 0.6rem;
   line-height: 1.1;
-  background: linear-gradient(135deg, #f8fafc 0%, #a78bfa 50%, #22d3ee 100%);
+  background: linear-gradient(135deg, #f8fafc 0%, var(--proj-c1) 50%, var(--proj-c2) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -99,7 +99,7 @@
 }
 
 .ppp-readme {
-  border: 1px solid rgba(167, 139, 250, 0.12);
+  border: 1px solid rgba(var(--proj-r1), 0.12);
   border-radius: 8px;
   overflow: hidden;
   background: rgba(255, 255, 255, 0.015);
@@ -110,10 +110,10 @@
   font-weight: 700;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #a78bfa;
+  color: var(--proj-c1);
   padding: 0.75rem 1.25rem;
-  background: rgba(167, 139, 250, 0.06);
-  border-bottom: 1px solid rgba(167, 139, 250, 0.1);
+  background: rgba(var(--proj-r1), 0.06);
+  border-bottom: 1px solid rgba(var(--proj-r1), 0.1);
 }
 
 .ppp-readme-content {
@@ -177,10 +177,10 @@
 }
 
 .btn-outline:hover {
-  border-color: #22d3ee;
-  color: #22d3ee;
-  background: rgba(34, 211, 238, 0.06);
-  box-shadow: 0 0 15px rgba(34, 211, 238, 0.1);
+  border-color: var(--proj-c2);
+  color: var(--proj-c2);
+  background: rgba(var(--proj-r2), 0.06);
+  box-shadow: 0 0 15px rgba(var(--proj-r2), 0.1);
 }
 
 .btn-ghost {
@@ -199,8 +199,8 @@
   font-size: 0.7rem;
   padding: 0.2rem 0.55rem;
   border-radius: 3px;
-  background: rgba(167, 139, 250, 0.1);
-  color: #a78bfa;
-  border: 1px solid rgba(167, 139, 250, 0.2);
+  background: rgba(var(--proj-r1), 0.1);
+  color: var(--proj-c1);
+  border: 1px solid rgba(var(--proj-r1), 0.2);
   font-weight: 500;
 }

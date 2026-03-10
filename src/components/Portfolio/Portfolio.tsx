@@ -48,24 +48,28 @@ const PROJECTS = [
     displayName: 'DrummaLlama',
     description: 'Drum loop machine and metronome built with Web Audio API and React.',
     tags: ['React', 'TypeScript', 'Web Audio API'],
+    colorIndex: 0,
   },
   {
     name: 'saltmarsh-timeline',
     displayName: 'Saltmarsh Timeline',
     description: 'Interactive D&D campaign timeline tool with visual event tracking.',
     tags: ['React', 'TypeScript', 'D&D'],
+    colorIndex: 1,
   },
   {
     name: 'eataburrita-native',
     displayName: 'Eat-a-Burrita',
     description: 'Native Android companion app built with Kotlin and Material Design.',
     tags: ['Kotlin', 'Android', 'Mobile'],
+    colorIndex: 2,
   },
   {
     name: 'battle-dice-web',
     displayName: 'Battle Dice',
     description: 'Real-time multiplayer dice battle game with WebSocket state sync.',
     tags: ['React', 'WebSockets', 'TypeScript'],
+    colorIndex: 3,
   },
 ]
 
@@ -193,10 +197,10 @@ export function Portfolio() {
               <div
                 key={p.name}
                 className="project-card"
-                onClick={() => navigate(`/project/${p.name}`)}
+                onClick={() => navigate(`/project/${p.name}?c=${p.colorIndex}`)}
                 role="link"
                 tabIndex={0}
-                onKeyDown={(e) => e.key === 'Enter' && navigate(`/project/${p.name}`)}
+                onKeyDown={(e) => e.key === 'Enter' && navigate(`/project/${p.name}?c=${p.colorIndex}`)}
               >
                 <div className="project-name">{p.displayName}</div>
                 <div className="project-desc">{p.description}</div>
