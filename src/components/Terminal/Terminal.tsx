@@ -22,6 +22,13 @@ export function Terminal() {
     }
   }, [terminalVisible])
 
+  useEffect(() => {
+    if (!terminalVisible) return
+    const handleFocus = () => focusInput()
+    window.addEventListener('focus', handleFocus)
+    return () => window.removeEventListener('focus', handleFocus)
+  }, [terminalVisible])
+
   return (
     <div className="terminal-window">
       <TerminalHeader />
