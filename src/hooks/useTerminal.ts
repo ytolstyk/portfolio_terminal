@@ -15,13 +15,17 @@ export function useTerminal() {
       const trimmed = raw.trim()
       if (!trimmed) return
 
+      const inProject = state.currentPath.startsWith('~/projects/')
+      const pushLines = (lines: OutputLine[]) =>
+        dispatch({ type: inProject ? 'PUSH_PROJECT_LINES' : 'PUSH_LINES', lines })
+
       // Push the command line itself
       const commandLine: OutputLine = {
         id: crypto.randomUUID(),
         type: 'command',
         content: trimmed,
       }
-      dispatch({ type: 'PUSH_LINES', lines: [commandLine] })
+      pushLines([commandLine])
 
       // Push to history
       dispatch({ type: 'PUSH_HISTORY', command: trimmed })
@@ -36,13 +40,13 @@ export function useTerminal() {
       const result = dispatchCommand(trimmed, state)
 
       if (result.shouldClear) {
-        dispatch({ type: 'CLEAR_OUTPUT' })
+        dispatch({ type: inProject ? 'CLEAR_PROJECT_OUTPUT' : 'CLEAR_OUTPUT' })
         return
       }
 
       if (result.shouldExit) {
         const exitLines: OutputLine[] = result.lines.map((l) => ({ ...l, id: crypto.randomUUID() }))
-        if (exitLines.length > 0) dispatch({ type: 'PUSH_LINES', lines: exitLines })
+        if (exitLines.length > 0) pushLines(exitLines)
         setTimeout(() => setTerminalVisible(false), 400)
         return
       }
@@ -61,7 +65,7 @@ export function useTerminal() {
       }))
 
       if (outputLines.length > 0) {
-        dispatch({ type: 'PUSH_LINES', lines: outputLines })
+        pushLines(outputLines)
       }
 
       if (result.navigationTarget != null) {

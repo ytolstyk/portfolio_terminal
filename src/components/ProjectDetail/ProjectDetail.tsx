@@ -4,6 +4,9 @@ import { useTerminalContext } from '@/context/TerminalContext'
 import { getProject } from '@/data/projects'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { renderWithLinks } from '@/lib/renderWithLinks'
+import { TerminalInput } from '@/components/Terminal/TerminalInput'
+import { TerminalOutputLine } from '@/components/Terminal/TerminalOutputLine'
+import { useAutoScroll } from '@/hooks/useAutoScroll'
 
 interface Props {
   name: string
@@ -11,13 +14,18 @@ interface Props {
 
 export function ProjectDetail({ name }: Props) {
   const navigate = useNavigate()
-  const { dispatch } = useTerminalContext()
+  const { state, dispatch } = useTerminalContext()
   const project = getProject(name)
+  const bottomRef = useAutoScroll(state.projectLines)
 
   const goBack = useCallback(() => {
     dispatch({ type: 'SET_PATH', path: '~' })
     navigate('/')
   }, [navigate, dispatch])
+
+  useEffect(() => {
+    dispatch({ type: 'CLEAR_PROJECT_OUTPUT' })
+  }, [dispatch])
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -86,15 +94,13 @@ export function ProjectDetail({ name }: Props) {
             ))}
             <div className="output-line output-line--output">&nbsp;</div>
             <div className="output-line output-line--output">{separator}</div>
-            <div
-              className="output-line output-line--system"
-              style={{ cursor: 'pointer' }}
-              onClick={goBack}
-            >
-              &gt; press Backspace or click here to return home
-            </div>
+            {state.projectLines.map((line) => (
+              <TerminalOutputLine key={line.id} line={line} />
+            ))}
+            <div ref={bottomRef} />
           </div>
         </ScrollArea>
+        <TerminalInput />
       </div>
     </div>
   )

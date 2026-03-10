@@ -37,6 +37,7 @@ export function useBootSequence() {
           const lsResult = dispatchCommand('ls', {
             phase: 'ready',
             lines: [],
+            projectLines: [],
             commandHistory: [],
             currentPath: '~',
             grepFilter: null,

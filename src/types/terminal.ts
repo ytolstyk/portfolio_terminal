@@ -32,6 +32,7 @@ export type TerminalPhase = 'boot' | 'ready'
 export interface TerminalState {
   phase: TerminalPhase
   lines: OutputLine[]
+  projectLines: OutputLine[]
   commandHistory: string[]
   currentPath: string
   grepFilter: string | null

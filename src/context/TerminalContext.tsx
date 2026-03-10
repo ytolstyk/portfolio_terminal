@@ -4,7 +4,9 @@ import type { OutputLine, TerminalPhase, TerminalState } from '@/types/terminal'
 type Action =
   | { type: 'BOOT_COMPLETE' }
   | { type: 'PUSH_LINES'; lines: OutputLine[] }
+  | { type: 'PUSH_PROJECT_LINES'; lines: OutputLine[] }
   | { type: 'CLEAR_OUTPUT' }
+  | { type: 'CLEAR_PROJECT_OUTPUT' }
   | { type: 'SET_PATH'; path: string }
   | { type: 'SET_GREP_FILTER'; filter: string | null }
   | { type: 'PUSH_HISTORY'; command: string }
@@ -12,6 +14,7 @@ type Action =
 const initialState: TerminalState = {
   phase: 'boot' as TerminalPhase,
   lines: [],
+  projectLines: [],
   commandHistory: [],
   currentPath: '~',
   grepFilter: null,
@@ -28,8 +31,17 @@ function reducer(state: TerminalState, action: Action): TerminalState {
         lines: [...state.lines, ...action.lines].slice(-300),
       }
 
+    case 'PUSH_PROJECT_LINES':
+      return {
+        ...state,
+        projectLines: [...state.projectLines, ...action.lines].slice(-300),
+      }
+
     case 'CLEAR_OUTPUT':
       return { ...state, lines: [], grepFilter: null }
+
+    case 'CLEAR_PROJECT_OUTPUT':
+      return { ...state, projectLines: [] }
 
     case 'SET_PATH':
       return { ...state, currentPath: action.path }
