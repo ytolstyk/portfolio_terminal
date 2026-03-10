@@ -21,6 +21,8 @@ const COMMANDS = [
   ["rm <file>", "delete something dramatically"],
   ["man <cmd>", "read the manual"],
   ["sudo <cmd>", "attempt to feel powerful"],
+  ["git <cmd>", "version control theatrics"],
+  ["npm <cmd>", "node package manager (and anxiety)"],
 ];
 
 export function help(): CommandResult {

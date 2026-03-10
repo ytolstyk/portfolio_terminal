@@ -1,4 +1,6 @@
 import type { CommandResult, TerminalState } from '@/types/terminal'
+import { git } from './git'
+import { npm } from './npm'
 import { ls } from './ls'
 import { cd } from './cd'
 import { cat } from './cat'
@@ -66,6 +68,10 @@ export function dispatch(raw: string, state: TerminalState): CommandResult {
       return man(args)
     case 'sudo':
       return sudo(args)
+    case 'git':
+      return git(args)
+    case 'npm':
+      return npm(args, state)
     default:
       if (trimmed.endsWith('^C')) {
         return { lines: [] }

@@ -75,6 +75,10 @@ export function useTerminal() {
         pushLines(outputLines)
       }
 
+      if (result.openUrl) {
+        window.open(result.openUrl, '_blank', 'noopener,noreferrer')
+      }
+
       if (result.navigationTarget != null) {
         navigate(result.navigationTarget)
       }

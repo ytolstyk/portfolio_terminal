@@ -25,6 +25,7 @@ export interface CommandResult {
   shouldExit?: boolean
   setGrepFilter?: string | null
   updatePath?: string
+  openUrl?: string
 }
 
 export type TerminalPhase = 'boot' | 'ready'
