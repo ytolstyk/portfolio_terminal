@@ -8,8 +8,18 @@ export const projects: Project[] = [
     language: "TypeScript",
     url: "https://drummallama.com",
     github: "https://github.com/ytolstyk/advanced-metronome",
-    year: 2025,
-    tags: ["audio", "web-audio", "react", "music"],
+    year: 2026,
+    tags: [
+      "audio",
+      "web-audio",
+      "react",
+      "music",
+      "metronome",
+      "drum-machine",
+      "guitar-tuner",
+      "guitar-chords",
+      "guitar-scales",
+    ],
     readme: `advanced-metronome
 Drum loop machine and metronome built with Web Audio API.
 
@@ -20,16 +30,19 @@ DESCRIPTION
 
 TECH STACK
   Language:   TypeScript
-  Framework:  React
+  Framework:  React, Shadcn UI
   Audio:      Web Audio API
   Build:      Vite
 
 FEATURES
-  • Step sequencer with 16 steps per pattern
+  • Step sequencer with variable steps per pattern
   • Multiple drum tracks (kick, snare, hi-hat, etc.)
   • BPM control with tap tempo
   • Swing/groove adjustment
   • Visual beat indicator with precise timing
+  • Guitar tuner mode with real-time pitch detection
+  • Guitar chord library with audio samples
+  • Guitar scale reference tool with audio playback
 
 USAGE
   npm install
@@ -40,20 +53,20 @@ GitHub: https://github.com/ytolstyk/advanced-metronome`,
   },
   {
     name: "eataburrita-native",
-    displayName: "eataburrita-native",
+    displayName: "Eat-a-Burrita",
     description: "Native Android app — first mobile venture",
     language: "Kotlin",
     url: "https://github.com/ytolstyk/eataburrita-native",
     github: "https://github.com/ytolstyk/eataburrita-native",
     year: 2025,
-    tags: ["android", "kotlin", "mobile", "native"],
+    tags: ["android", "kotlin", "mobile", "native", "google-maps"],
     readme: `eataburrita-native
 Native Android app — the mobile companion to eataburrita.
 
 DESCRIPTION
-  First foray into native Android development. A companion app for
-  the eataburrita brand, built with Kotlin and Android SDK. Explores
-  native navigation, layouts, and lifecycle management.
+  First foray into native Android development, built with Kotlin
+  and Android SDK. Explores native navigation, layouts,
+  and lifecycle management. Integrates with Google Maps API.
 
 TECH STACK
   Language:   Kotlin
@@ -76,34 +89,46 @@ GitHub: https://github.com/ytolstyk/eataburrita-native`,
   },
   {
     name: "saltmarsh-timeline",
-    displayName: "saltmarsh-timeline",
+    displayName: "Saltmarsh Timeline",
     description:
       "Interactive timeline app for DnD campaign Ghosts of Saltmarsh",
     language: "TypeScript",
     url: "https://saltmarsh-timeline.com",
     github: "https://github.com/ytolstyk/saltmarsh-timeline",
     year: 2025,
-    tags: ["react", "dnd", "timeline", "game-tool"],
+    tags: [
+      "react",
+      "dnd",
+      "timeline",
+      "game-tool",
+      "aws",
+      "amplify",
+      "cognito",
+      "mantine",
+      "styled-components",
+      "typescript",
+    ],
     readme: `saltmarsh-timeline
 Interactive timeline app for D&D campaign: Ghosts of Saltmarsh.
 
 DESCRIPTION
-  A campaign management tool for tracking events, NPCs, and plot
+  A campaign management tool for tracking events and plot
   threads in the Ghosts of Saltmarsh D&D module. Features a visual
   timeline with filterable event categories and session notes.
 
 TECH STACK
-  Language:   TypeScript
-  Framework:  React
-  Build:      Vite
-  Styling:    CSS
+  Language:          TypeScript
+  Framework:         React
+  Build:             Vite
+  Styling:           Mantine, Styled-Components
+  Infrastructure:    AWS Amplify, AWS Cognito
 
 FEATURES
-  • Visual timeline with zoom and pan
+  • Visual timeline with scale and auto-grouping of events
   • Event categorization (combat, story, NPC encounters)
-  • Session log with searchable notes
-  • NPC relationship tracker
-  • Printable session summaries
+  • Searchable event log with filters
+  • Import/export campaign data as JSON
+  • User authentication for private campaign timelines
 
 LORE
   Set in the coastal town of Saltmarsh, this tool helps DMs track
@@ -118,13 +143,22 @@ GitHub: https://github.com/ytolstyk/saltmarsh-timeline`,
   },
   {
     name: "battle-dice-web",
-    displayName: "battle-dice-web",
+    displayName: "Dice Battles",
     description: "Web UI for battle dice game — React frontend",
     language: "TypeScript",
     url: "https://dicebattles.com",
     github: "https://github.com/ytolstyk/battle-dice-web",
     year: 2025,
-    tags: ["react", "websockets", "game", "frontend"],
+    tags: [
+      "react",
+      "websockets",
+      "game",
+      "frontend",
+      "mantine",
+      "typescript",
+      "vite",
+      "websocket",
+    ],
     readme: `battle-dice-web
 React frontend for the battle dice multiplayer game.
 
@@ -135,14 +169,13 @@ DESCRIPTION
 
 TECH STACK
   Language:   TypeScript
-  Framework:  React
+  Framework:  React, Mantine UI
   Build:      Vite
   Comms:      WebSocket (native)
 
 FEATURES
   • Real-time game state updates via WebSocket
   • Animated dice roll visualizations
-  • HP bar with damage animations
   • Session lobby with shareable codes
   • Mobile-responsive battle arena UI
 
@@ -158,21 +191,28 @@ GitHub: https://github.com/ytolstyk/battle-dice-web`,
   },
   {
     name: "battle-dice-server",
-    displayName: "battle-dice-server",
+    displayName: "Dice Battles Server",
     description:
       "Express server with WebSocket support for real-time battle dice game",
     language: "TypeScript",
     url: "https://github.com/ytolstyk/battle-dice-server",
     github: "https://github.com/ytolstyk/battle-dice-server",
     year: 2025,
-    tags: ["express", "websockets", "game", "backend"],
+    tags: [
+      "express",
+      "websockets",
+      "game",
+      "backend",
+      "typescript",
+      "websocket",
+    ],
     readme: `battle-dice-server
 Express server with WebSocket support for real-time battle dice game.
 
 DESCRIPTION
   Real-time multiplayer battle dice game backend. Players roll dice,
-  attack each other, and track HP via persistent WebSocket connections.
-  Built with Express and the ws library on Node.js.
+  attack each other, and determine rules via persistent WebSocket connections.
+  Built with Express and the WS library on Node.js.
 
 TECH STACK
   Runtime:    Node.js

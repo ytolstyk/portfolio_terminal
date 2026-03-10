@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -7,70 +7,74 @@
 
 /* ─── Shadcn color tokens (kept for component compatibility) ─── */
 :root {
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.145 0 0);
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.145 0 0);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.145 0 0);
-    --primary: oklch(0.205 0 0);
-    --primary-foreground: oklch(0.985 0 0);
-    --secondary: oklch(0.97 0 0);
-    --secondary-foreground: oklch(0.205 0 0);
-    --muted: oklch(0.97 0 0);
-    --muted-foreground: oklch(0.556 0 0);
-    --accent: oklch(0.97 0 0);
-    --accent-foreground: oklch(0.205 0 0);
-    --destructive: oklch(0.58 0.22 27);
-    --border: oklch(0.922 0 0);
-    --input: oklch(0.922 0 0);
-    --ring: oklch(0.708 0 0);
-    --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.58 0.22 27);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --radius: 0.625rem;
 
-    /* ─── Terminal theme ─── */
-    --terminal-green: #00ff41;
-    --terminal-green-dim: #00cc33;
-    --terminal-bg: #0d0d0d;
-    --terminal-border: rgba(0, 255, 65, 0.2);
-    --terminal-font: 'JetBrains Mono', 'Courier New', monospace;
-    --terminal-yellow: #f0e040;
-    --terminal-red: #ff4444;
-    --terminal-cyan: #00d8ff;
-    --terminal-white: #c8c8c8;
+  /* ─── Terminal theme ─── */
+  --terminal-green: #00ff41;
+  --terminal-green-dim: #00cc33;
+  --terminal-bg: #0d0d0d;
+  --terminal-border: rgba(0, 255, 65, 0.2);
+  --terminal-font: "JetBrains Mono", "Courier New", monospace;
+  --terminal-yellow: #f0e040;
+  --terminal-red: #ff4444;
+  --terminal-cyan: #00d8ff;
+  --terminal-white: #c8c8c8;
 }
 
 @theme inline {
-    --color-ring: var(--ring);
-    --color-input: var(--input);
-    --color-border: var(--border);
-    --color-destructive: var(--destructive);
-    --color-accent-foreground: var(--accent-foreground);
-    --color-accent: var(--accent);
-    --color-muted-foreground: var(--muted-foreground);
-    --color-muted: var(--muted);
-    --color-secondary-foreground: var(--secondary-foreground);
-    --color-secondary: var(--secondary);
-    --color-primary-foreground: var(--primary-foreground);
-    --color-primary: var(--primary);
-    --color-popover-foreground: var(--popover-foreground);
-    --color-popover: var(--popover);
-    --color-card-foreground: var(--card-foreground);
-    --color-card: var(--card);
-    --color-foreground: var(--foreground);
-    --color-background: var(--background);
-    --radius-sm: calc(var(--radius) * 0.6);
-    --radius-md: calc(var(--radius) * 0.8);
-    --radius-lg: var(--radius);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
 }
 
 /* ─── Global reset ─── */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-html, body, #root {
+html,
+body,
+#root {
   height: 100%;
   width: 100%;
   background: var(--terminal-bg);
@@ -86,12 +90,14 @@ html, body, #root {
   background: var(--terminal-bg);
   position: relative;
   overflow: hidden;
-  box-shadow: 0 0 40px rgba(0, 255, 65, 0.15), inset 0 0 80px rgba(0, 0, 0, 0.5);
+  box-shadow:
+    0 0 40px rgba(0, 255, 65, 0.15),
+    inset 0 0 80px rgba(0, 0, 0, 0.5);
 }
 
 /* CRT scanlines overlay */
 .terminal-window::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background: repeating-linear-gradient(
@@ -126,31 +132,36 @@ html, body, #root {
 }
 
 .dot {
-  width: 12px;
-  height: 12px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
 }
 
-.dot-red    { background: #ff5f57; }
-.dot-yellow { background: #ffbd2e; }
-.dot-green  { background: #28c840; }
+.dot-red {
+  background: #ff5f57;
+}
+.dot-yellow {
+  background: #ffbd2e;
+}
+.dot-green {
+  background: #28c840;
+}
 
 .dot-red,
 .dot-yellow {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 9px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 900;
   line-height: 1;
-  color: rgba(0, 0, 0, 0);
-  transition: color 0.15s;
+  color: rgba(0, 0, 0, 0.45);
   user-select: none;
 }
 
 .dot-red:hover,
 .dot-yellow:hover {
-  color: rgba(0, 0, 0, 0.6);
+  color: rgba(0, 0, 0, 0.75);
 }
 
 .header-title {
@@ -193,13 +204,19 @@ html, body, #root {
   word-break: break-all;
 }
 
-.output-line--output  { color: var(--terminal-white); }
+.output-line--output {
+  color: var(--terminal-white);
+}
 .output-line--command {
   color: var(--terminal-green);
   text-shadow: 0 0 8px var(--terminal-green);
 }
-.output-line--error   { color: var(--terminal-red); }
-.output-line--system  { color: #666; }
+.output-line--error {
+  color: var(--terminal-red);
+}
+.output-line--system {
+  color: #666;
+}
 .output-line--success {
   color: var(--terminal-green);
   font-weight: 700;
@@ -292,6 +309,11 @@ html, body, #root {
 
 /* ─── Animations ─── */
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }

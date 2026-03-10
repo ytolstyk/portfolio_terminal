@@ -11,13 +11,13 @@ export function TerminalHeader() {
           title="Close"
           onClick={() => setTerminalVisible(false)}
           style={{ cursor: 'pointer' }}
-        >✕</span>
+        >×</span>
         <span
           className="dot dot-yellow"
           title="Minimize"
           onClick={() => setTerminalVisible(false)}
           style={{ cursor: 'pointer' }}
-        >−</span>
+        >–</span>
         <span className="dot dot-green" />
       </div>
       <span className="header-title">visitor@ytolstyk — bash</span>
