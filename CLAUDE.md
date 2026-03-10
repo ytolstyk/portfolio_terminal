@@ -5,10 +5,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-npm run dev       # Start dev server with HMR (Vite)
-npm run build     # Type-check + production build (tsc -b && vite build)
-npm run lint      # ESLint (flat config, v9+)
-npm run preview   # Preview production build locally
+npm run dev                 # Start dev server with HMR (Vite)
+rtk tsc                     # Type-check (tsc -b)
+rtk err npm run build       # Production build (vite build)
+rtk lint                    # ESLint (flat config, v9+)
+npm run preview             # Preview production build locally
 ```
 
 No test runner is configured.
@@ -44,6 +45,7 @@ No test runner is configured.
 ## Design Conventions
 
 **5-color cycling accent palette** (used for experience items, nth-child 1-based):
+
 - index 0 → `#fbbf24` amber
 - index 1 → `#22d3ee` cyan
 - index 2 → `#fb7185` rose
