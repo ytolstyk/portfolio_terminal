@@ -68,6 +68,46 @@ export function TerminalInput() {
       tabMatchesRef.current = []
       tabIndexRef.current = -1
 
+      if (e.ctrlKey && e.key === 'c') {
+        e.preventDefault()
+        executeCommand(value ? `${value} ^C` : '^C')
+        setValue('')
+        resetIndex()
+        return
+      }
+
+      if (e.ctrlKey && e.key === 'd') {
+        e.preventDefault()
+        if (!value) {
+          executeCommand('exit')
+        }
+        return
+      }
+
+      if (e.ctrlKey && e.key === 'l') {
+        e.preventDefault()
+        executeCommand('clear')
+        return
+      }
+
+      if (e.ctrlKey && e.key === 'u') {
+        e.preventDefault()
+        setValue('')
+        return
+      }
+
+      if (e.ctrlKey && e.key === 'a') {
+        e.preventDefault()
+        inputRef.current?.setSelectionRange(0, 0)
+        return
+      }
+
+      if (e.ctrlKey && e.key === 'e') {
+        e.preventDefault()
+        inputRef.current?.setSelectionRange(value.length, value.length)
+        return
+      }
+
       if (e.key === 'Enter') {
         executeCommand(value)
         setValue('')

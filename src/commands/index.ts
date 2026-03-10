@@ -67,6 +67,9 @@ export function dispatch(raw: string, state: TerminalState): CommandResult {
     case 'sudo':
       return sudo(args)
     default:
+      if (trimmed.endsWith('^C')) {
+        return { lines: [] }
+      }
       return {
         lines: [
           {
