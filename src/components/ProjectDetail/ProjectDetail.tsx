@@ -72,6 +72,11 @@ export function ProjectDetail({ name }: Props) {
             <div className="output-line output-line--output">
               &nbsp;&nbsp;GitHub: {renderWithLinks(project.github ?? project.url)}
             </div>
+            {project.url && project.url !== project.github && (
+              <div className="output-line output-line--output">
+                &nbsp;&nbsp;Live:&nbsp;&nbsp;&nbsp;{renderWithLinks(project.url)}
+              </div>
+            )}
             <div className="output-line output-line--output">{separator}</div>
             <div className="output-line output-line--output">&nbsp;</div>
             {project.readme.split('\n').map((line, i) => (
