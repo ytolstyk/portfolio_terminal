@@ -10,9 +10,10 @@ import { projects } from '@/data/projects'
 
 const COMMANDS = [
   'ls', 'cd', 'cat', 'grep', 'pwd', 'whoami', 'echo', 'history', 'clear', 'help',
-  'ps', 'ifconfig', 'touch', 'mkdir', 'cp', 'mv', 'rm', 'man', 'sudo',
+  'ps', 'ifconfig', 'touch', 'mkdir', 'cp', 'mv', 'rm', 'man', 'sudo', 'resume',
 ]
 const PROJECT_NAMES = projects.map((p) => p.name)
+const CAT_TARGETS = ['resume.txt', ...PROJECT_NAMES]
 
 export function TerminalInput() {
   const { state, executeCommand } = useTerminal()
@@ -57,7 +58,8 @@ export function TerminalInput() {
           const cmd = value.slice(0, spaceIdx)
           if (cmd !== 'cd' && cmd !== 'cat') return
           const partial = value.slice(spaceIdx + 1)
-          const matches = PROJECT_NAMES.filter((n) => n.startsWith(partial))
+          const pool = cmd === 'cat' ? CAT_TARGETS : PROJECT_NAMES
+          const matches = pool.filter((n) => n.startsWith(partial))
           if (matches.length === 0) return
           if (tabMatchesRef.current.join(',') !== matches.join(',')) {
             tabMatchesRef.current = matches

@@ -1,9 +1,10 @@
 import type { CommandResult } from "@/types/terminal";
 
 const COMMANDS = [
-  ["ls", "list all projects"],
+  ["resume", "display full resume"],
+  ["ls", "list all projects and files"],
   ["cd <name>", "navigate into a project (or cd .. to go back)"],
-  ["cat <name>", "read a project README"],
+  ["cat <name>", "read a project README or resume.txt"],
   ["grep <pattern>", "filter visible output by pattern"],
   ["pwd", "print working directory"],
   ["whoami", "display user info"],

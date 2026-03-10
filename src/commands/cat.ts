@@ -1,4 +1,5 @@
 import { getProject } from '@/data/projects'
+import { resume } from './resume'
 import type { CommandResult } from '@/types/terminal'
 
 export function cat(args: string[]): CommandResult {
@@ -6,12 +7,16 @@ export function cat(args: string[]): CommandResult {
 
   if (!target) {
     return {
-      lines: [{ type: 'error', content: 'usage: cat <project-name>' }],
+      lines: [{ type: 'error', content: 'usage: cat <file>' }],
     }
   }
 
   // strip trailing slash
   const name = target.replace(/\/$/, '')
+
+  if (name === 'resume' || name === 'resume.txt') {
+    return resume()
+  }
   const project = getProject(name)
 
   if (!project) {
