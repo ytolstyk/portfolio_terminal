@@ -94,7 +94,13 @@ export function ProjectDetail({ name }: Props) {
             ))}
             <div className="output-line output-line--output">&nbsp;</div>
             <div className="output-line output-line--output">{separator}</div>
-            {state.projectLines.map((line) => (
+            <div className="output-line output-line--system">tip: type "cd .." to return to root</div>
+            {(state.grepFilter
+              ? state.projectLines.filter((l) =>
+                  l.content.toLowerCase().includes(state.grepFilter!.toLowerCase())
+                )
+              : state.projectLines
+            ).map((line) => (
               <TerminalOutputLine key={line.id} line={line} />
             ))}
             <div ref={bottomRef} />
