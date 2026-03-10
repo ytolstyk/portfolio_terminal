@@ -64,7 +64,7 @@ export function git(args: string[]): CommandResult {
 
     case 'commit': {
       const msgIdx = args.indexOf('-m')
-      const msg = msgIdx !== -1 ? args[msgIdx + 1] : undefined
+      const msg = msgIdx !== -1 ? args.slice(msgIdx + 1).join(' ') || undefined : undefined
       return {
         lines: [
           { type: 'success', content: `[main a1b2c3d] ${msg ?? 'your message here'}` },
