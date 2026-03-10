@@ -254,13 +254,17 @@ body,
 }
 
 .cursor {
-  display: inline-block;
-  width: 0.6ch;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0.6ch;
   height: 1.1em;
   background: var(--terminal-green);
+  color: var(--terminal-bg);
   vertical-align: text-bottom;
   flex-shrink: 0;
   box-shadow: 0 0 6px var(--terminal-green);
+  white-space: pre;
 }
 
 .cursor--blink {

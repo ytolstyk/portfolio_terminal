@@ -17,12 +17,17 @@ const PROJECT_NAMES = projects.map((p) => p.name)
 export function TerminalInput() {
   const { state, executeCommand } = useTerminal()
   const [value, setValue] = useState('')
+  const [cursorPos, setCursorPos] = useState(0)
   const [cursorActive, setCursorActive] = useState(true)
   const inputRef = useRef<HTMLInputElement>(null)
   const blinkTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const { navigateHistory, resetIndex } = useCommandHistory(state.commandHistory)
   const tabMatchesRef = useRef<string[]>([])
   const tabIndexRef = useRef<number>(-1)
+
+  const syncCursor = useCallback(() => {
+    setCursorPos(inputRef.current?.selectionStart ?? 0)
+  }, [])
 
   const stopBlink = useCallback(() => {
     setCursorActive(false)
@@ -111,21 +116,29 @@ export function TerminalInput() {
       if (e.key === 'Enter') {
         executeCommand(value)
         setValue('')
+        setCursorPos(0)
         resetIndex()
       } else if (e.key === 'ArrowUp') {
         e.preventDefault()
         const prev = navigateHistory('up', value)
         setValue(prev)
+        setTimeout(syncCursor)
       } else if (e.key === 'ArrowDown') {
         e.preventDefault()
         const next = navigateHistory('down', value)
         setValue(next)
+        setTimeout(syncCursor)
+      } else {
+        setTimeout(syncCursor)
       }
     },
-    [value, executeCommand, navigateHistory, resetIndex, stopBlink]
+    [value, executeCommand, navigateHistory, resetIndex, stopBlink, syncCursor]
   )
 
   const prompt = `visitor@ytolstyk:${state.currentPath}$`
+  const before = value.slice(0, cursorPos)
+  const atCursor = value[cursorPos] ?? ' '
+  const after = value.slice(cursorPos + 1)
 
   return (
     <div
@@ -134,15 +147,17 @@ export function TerminalInput() {
     >
       <span className="prompt">{prompt}&nbsp;</span>
       <div className="input-display">
-        <span className="input-text">{value}</span>
-        <span className={`cursor${cursorActive ? ' cursor--blink' : ''}`} />
+        <span className="input-text">{before}</span>
+        <span className={`cursor${cursorActive ? ' cursor--blink' : ''}`}>{atCursor}</span>
+        <span className="input-text">{after}</span>
       </div>
       <input
         ref={inputRef}
         className="hidden-input"
         value={value}
-        onChange={(e) => setValue(e.target.value)}
+        onChange={(e) => { setValue(e.target.value); setCursorPos(e.target.selectionStart ?? 0) }}
         onKeyDown={handleKeyDown}
+        onSelect={syncCursor}
         autoFocus
         autoComplete="off"
         autoCorrect="off"
