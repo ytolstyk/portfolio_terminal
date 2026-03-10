@@ -10,6 +10,15 @@ import { history } from './history'
 import { help } from './help'
 import { clear } from './clear'
 import { exit } from './exit'
+import { ps } from './ps'
+import { ifconfig } from './ifconfig'
+import { touch } from './touch'
+import { mkdir } from './mkdir'
+import { cp } from './cp'
+import { mv } from './mv'
+import { rm } from './rm'
+import { man } from './man'
+import { sudo } from './sudo'
 
 export function dispatch(raw: string, state: TerminalState): CommandResult {
   const trimmed = raw.trim()
@@ -39,6 +48,24 @@ export function dispatch(raw: string, state: TerminalState): CommandResult {
       return clear()
     case 'exit':
       return exit()
+    case 'ps':
+      return ps()
+    case 'ifconfig':
+      return ifconfig()
+    case 'touch':
+      return touch(args)
+    case 'mkdir':
+      return mkdir(args)
+    case 'cp':
+      return cp(args)
+    case 'mv':
+      return mv(args)
+    case 'rm':
+      return rm(args)
+    case 'man':
+      return man(args)
+    case 'sudo':
+      return sudo(args)
     default:
       return {
         lines: [
