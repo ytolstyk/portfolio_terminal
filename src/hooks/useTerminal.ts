@@ -47,7 +47,14 @@ export function useTerminal() {
       if (result.shouldExit) {
         const exitLines: OutputLine[] = result.lines.map((l) => ({ ...l, id: crypto.randomUUID() }))
         if (exitLines.length > 0) pushLines(exitLines)
-        setTimeout(() => setTerminalVisible(false), 400)
+        if (inProject) {
+          setTimeout(() => {
+            dispatch({ type: 'SET_PATH', path: '~' })
+            navigate('/')
+          }, 400)
+        } else {
+          setTimeout(() => setTerminalVisible(false), 400)
+        }
         return
       }
 
