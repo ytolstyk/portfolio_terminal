@@ -1,18 +1,26 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import { TerminalHeader } from './TerminalHeader'
 import { TerminalOutput } from './TerminalOutput'
 import { TerminalInput } from './TerminalInput'
 import { BootSequence } from './BootSequence'
 import { useTerminalContext } from '@/context/TerminalContext'
+import { useAppContext } from '@/context/AppContext'
 
 export function Terminal() {
   const { state } = useTerminalContext()
+  const { terminalVisible } = useAppContext()
   const bodyRef = useRef<HTMLDivElement>(null)
 
   const focusInput = () => {
     const input = bodyRef.current?.querySelector<HTMLInputElement>('.hidden-input')
     input?.focus()
   }
+
+  useEffect(() => {
+    if (terminalVisible) {
+      focusInput()
+    }
+  }, [terminalVisible])
 
   return (
     <div className="terminal-window">
