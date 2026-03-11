@@ -60,3 +60,4 @@ Run these commands. Ensure no errors before submitting.
 
 1. **Lint** `rtk lint`
 2. **Types** `rtk tsc`
+3. **Build** `err npm run build`
