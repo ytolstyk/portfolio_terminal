@@ -315,9 +315,13 @@ body,
 @keyframes blink {
   0%,
   100% {
-    opacity: 1;
+    background: var(--terminal-green);
+    color: var(--terminal-bg);
+    box-shadow: 0 0 6px var(--terminal-green);
   }
   50% {
-    opacity: 0;
+    background: transparent;
+    color: var(--terminal-green);
+    box-shadow: none;
   }
 }
