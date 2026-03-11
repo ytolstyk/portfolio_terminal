@@ -2,6 +2,7 @@ import type { CommandResult } from "@/types/terminal";
 
 const COMMANDS = [
   ["resume", "display full resume"],
+  ["contact", "show contact information"],
   ["ls", "list all projects and files"],
   ["cd <name>", "navigate into a project (or cd .. to go back)"],
   ["cat <name>", "read a project README or resume.txt"],

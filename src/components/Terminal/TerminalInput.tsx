@@ -10,7 +10,7 @@ import { projects } from '@/data/projects'
 
 const COMMANDS = [
   'ls', 'cd', 'cat', 'grep', 'pwd', 'whoami', 'echo', 'history', 'clear', 'help',
-  'ps', 'ifconfig', 'touch', 'mkdir', 'cp', 'mv', 'rm', 'man', 'sudo', 'resume',
+  'ps', 'ifconfig', 'touch', 'mkdir', 'cp', 'mv', 'rm', 'man', 'sudo', 'resume', 'contact',
 ]
 const PROJECT_NAMES = projects.map((p) => p.name)
 const CAT_TARGETS = ['resume.txt', ...PROJECT_NAMES]

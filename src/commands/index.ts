@@ -22,6 +22,7 @@ import { rm } from './rm'
 import { man } from './man'
 import { sudo } from './sudo'
 import { resume } from './resume'
+import { contact } from './contact'
 
 export function dispatch(raw: string, state: TerminalState): CommandResult {
   const trimmed = raw.trim()
@@ -71,6 +72,8 @@ export function dispatch(raw: string, state: TerminalState): CommandResult {
       return sudo(args)
     case 'resume':
       return resume()
+    case 'contact':
+      return contact()
     case 'git':
       return git(args)
     case 'npm':

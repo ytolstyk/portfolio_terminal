@@ -19,6 +19,8 @@ const SKILLS = [
   "Vite",
   "REST APIs",
   "Git",
+  "Agentic AI",
+  "Claude Code",
 ];
 
 const EXP_COLORS = [
@@ -271,6 +273,12 @@ export function Portfolio() {
                   rel="noopener noreferrer"
                 >
                   GitHub
+                </a>
+                <a
+                  className="btn btn-ghost"
+                  href="mailto:yuriy.tolstykh@gmail.com"
+                >
+                  Contact Me
                 </a>
                 <button className="btn btn-ghost" onClick={openTerminal}>
                   Open Terminal
