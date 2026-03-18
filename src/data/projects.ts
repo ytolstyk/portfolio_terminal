@@ -190,6 +190,58 @@ USAGE
 GitHub: https://github.com/ytolstyk/battle-dice-web`,
   },
   {
+    name: "dark-forest",
+    displayName: "Dark Forest",
+    description:
+      "Top-down survival horror game with procedural terrain and enemy AI",
+    language: "TypeScript",
+    url: "https://darkforest.yuriytolstykh.com",
+    github: "https://github.com/ytolstyk/dark-forest-game-concept",
+    year: 2026,
+    tags: [
+      "game",
+      "pixi.js",
+      "canvas",
+      "procedural-generation",
+      "react",
+      "typescript",
+      "pathfinding",
+      "astar",
+    ],
+    readme: `dark-forest
+Top-down survival horror game built with Pixi.js and React.
+
+DESCRIPTION
+  Escape the forest before the creatures find you. Locate keys and
+  fuel scattered across a procedurally generated map, then reach
+  the car before forest spirits and enemies close in. Toggle your
+  torch to see — but light attracts enemies.
+
+TECH STACK
+  Language:   TypeScript
+  Framework:  React 19
+  Renderer:   Pixi.js v8 (2D canvas/WebGL)
+  Build:      Vite
+  Terrain:    simplex-noise
+
+FEATURES
+  • Procedural terrain — rivers, forests, dirt paths, abandoned buildings
+  • Enemy AI state machine — patrol, chase, search, return via A* pathfinding
+  • The Leshen — a relentless forest spirit boss
+  • Crow flocks, particle effects, and atmospheric lighting
+  • Heart rate monitor HUD that reacts to danger
+  • Torch mechanic — reveals surroundings but attracts enemies
+  • Spatial audio — footsteps, torch crackle, growls, chase music
+  • Mobile touchscreen controls
+  • WASD / arrow key movement
+
+CONTROLS
+  WASD / Arrow keys   Move
+  Spacebar            Toggle torch
+
+GitHub: https://github.com/ytolstyk/dark-forest-game-concept`,
+  },
+  {
     name: "battle-dice-server",
     displayName: "Dice Battles Server",
     description:

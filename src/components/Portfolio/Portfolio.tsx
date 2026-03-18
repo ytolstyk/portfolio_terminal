@@ -145,6 +145,14 @@ const PROJECTS = [
     tags: ["React", "WebSockets", "TypeScript"],
     colorIndex: 3,
   },
+  {
+    name: "dark-forest",
+    displayName: "Dark Forest",
+    description:
+      "Top-down survival horror game with procedural terrain and enemy AI built with Pixi.js.",
+    tags: ["TypeScript", "Pixi.js", "Procedural Gen", "Claude Code"],
+    colorIndex: 4,
+  },
 ];
 
 const INTERESTS = [

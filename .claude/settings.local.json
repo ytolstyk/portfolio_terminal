@@ -12,7 +12,8 @@
       "Bash(npm lint:*)",
       "Bash(rtk npm:*)",
       "Bash(rtk lint:*)",
-      "Bash(rtk:*)"
+      "Bash(rtk:*)",
+      "WebFetch(domain:github.com)"
     ]
   },
   "enabledMcpjsonServers": [
