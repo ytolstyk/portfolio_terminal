@@ -165,7 +165,14 @@ export function TerminalInput() {
           const newValue = e.target.value
           const sel = e.target.selectionStart ?? newValue.length
           setValue(newValue)
-          setCursorPos(sel === 0 && newValue.length > 0 ? newValue.length : sel)
+          if (sel === 0 && newValue.length > 0) {
+            // Mobile Chrome bug: selectionStart reports 0 even though cursor should be at end.
+            // Force both the DOM cursor and visual cursor to the end.
+            e.target.setSelectionRange(newValue.length, newValue.length)
+            setCursorPos(newValue.length)
+          } else {
+            setCursorPos(sel)
+          }
         }}
         onKeyDown={handleKeyDown}
         onSelect={syncCursor}
