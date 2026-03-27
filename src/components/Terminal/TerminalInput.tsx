@@ -130,8 +130,6 @@ export function TerminalInput() {
         const next = navigateHistory('down', value)
         setValue(next)
         setTimeout(syncCursor)
-      } else {
-        setTimeout(syncCursor)
       }
     },
     [value, executeCommand, navigateHistory, resetIndex, stopBlink, syncCursor]
