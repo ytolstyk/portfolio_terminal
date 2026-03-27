@@ -161,7 +161,12 @@ export function TerminalInput() {
         ref={inputRef}
         className="hidden-input"
         defaultValue=""
-        onChange={(e) => { setValue(e.target.value); setCursorPos(e.target.selectionStart ?? e.target.value.length) }}
+        onChange={(e) => {
+          const newValue = e.target.value
+          const sel = e.target.selectionStart ?? newValue.length
+          setValue(newValue)
+          setCursorPos(sel === 0 && newValue.length > 0 ? newValue.length : sel)
+        }}
         onKeyDown={handleKeyDown}
         onSelect={syncCursor}
         autoFocus
