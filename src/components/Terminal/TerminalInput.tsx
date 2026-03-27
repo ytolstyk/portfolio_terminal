@@ -26,6 +26,12 @@ export function TerminalInput() {
   const tabMatchesRef = useRef<string[]>([])
   const tabIndexRef = useRef<number>(-1)
 
+  // Set both the display state and the actual uncontrolled input value
+  const setInputValue = useCallback((v: string) => {
+    setValue(v)
+    if (inputRef.current) inputRef.current.value = v
+  }, [])
+
   const syncCursor = useCallback(() => {
     setCursorPos(inputRef.current?.selectionStart ?? 0)
   }, [])
@@ -52,7 +58,7 @@ export function TerminalInput() {
             tabIndexRef.current = -1
           }
           tabIndexRef.current = (tabIndexRef.current + 1) % matches.length
-          setValue(matches[tabIndexRef.current])
+          setInputValue(matches[tabIndexRef.current])
         } else {
           // Complete project name for cd/cat
           const cmd = value.slice(0, spaceIdx)
@@ -66,7 +72,7 @@ export function TerminalInput() {
             tabIndexRef.current = -1
           }
           tabIndexRef.current = (tabIndexRef.current + 1) % matches.length
-          setValue(`${cmd} ${matches[tabIndexRef.current]}`)
+          setInputValue(`${cmd} ${matches[tabIndexRef.current]}`)
         }
         return
       }
@@ -78,7 +84,7 @@ export function TerminalInput() {
       if (e.ctrlKey && e.key === 'c') {
         e.preventDefault()
         executeCommand(value ? `${value} ^C` : '^C')
-        setValue('')
+        setInputValue('')
         resetIndex()
         return
       }
@@ -99,7 +105,7 @@ export function TerminalInput() {
 
       if (e.ctrlKey && e.key === 'u') {
         e.preventDefault()
-        setValue('')
+        setInputValue('')
         return
       }
 
@@ -117,22 +123,22 @@ export function TerminalInput() {
 
       if (e.key === 'Enter') {
         executeCommand(value)
-        setValue('')
+        setInputValue('')
         setCursorPos(0)
         resetIndex()
       } else if (e.key === 'ArrowUp') {
         e.preventDefault()
         const prev = navigateHistory('up', value)
-        setValue(prev)
+        setInputValue(prev)
         setTimeout(syncCursor)
       } else if (e.key === 'ArrowDown') {
         e.preventDefault()
         const next = navigateHistory('down', value)
-        setValue(next)
+        setInputValue(next)
         setTimeout(syncCursor)
       }
     },
-    [value, executeCommand, navigateHistory, resetIndex, stopBlink, syncCursor]
+    [value, executeCommand, navigateHistory, resetIndex, stopBlink, syncCursor, setInputValue]
   )
 
   const prompt = `visitor@ytolstyk:${state.currentPath}$`
@@ -154,8 +160,8 @@ export function TerminalInput() {
       <input
         ref={inputRef}
         className="hidden-input"
-        value={value}
-        onChange={(e) => { setValue(e.target.value); setCursorPos(e.target.value.length) }}
+        defaultValue=""
+        onChange={(e) => { setValue(e.target.value); setCursorPos(e.target.selectionStart ?? e.target.value.length) }}
         onKeyDown={handleKeyDown}
         onSelect={syncCursor}
         autoFocus
