@@ -157,7 +157,7 @@ export function TerminalInput() {
         ref={inputRef}
         className="hidden-input"
         value={value}
-        onChange={(e) => { setValue(e.target.value); setCursorPos(e.target.selectionStart ?? 0) }}
+        onChange={(e) => { setValue(e.target.value); setTimeout(syncCursor) }}
         onKeyDown={handleKeyDown}
         onSelect={syncCursor}
         autoFocus
