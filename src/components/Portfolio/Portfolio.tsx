@@ -7,20 +7,24 @@ const SKILLS = [
   "TypeScript",
   "JavaScript",
   "React",
+  "Redux",
   "Python",
   "Django",
   "Ruby on Rails",
   "Node.js",
-  "Express",
+  "GraphQL",
   "MySQL",
   "PostgreSQL",
   "WebSockets",
+  "REST APIs",
   "Webpack",
   "Vite",
-  "REST APIs",
-  "Git",
-  "Agentic AI",
+  "AWS",
+  "CI/CD",
+  "LLMs",
   "Claude Code",
+  "AI Agents",
+  "MCP",
 ];
 
 const EXP_COLORS = [
@@ -37,15 +41,15 @@ const EXPERIENCE = [
     role: "Senior Full-Stack Engineer",
     period: "Jan 2024 - Apr 2025",
     description:
-      "Built and maintained analytics product features across the full stack. Led warehouse connectors project connecting major data warehouses.",
+      "Architected and led the warehouse connectors initiative, enabling 5,000+ enterprise customers to sync Databricks, Redshift, BigQuery, and Snowflake with Mixpanel. Directly generated 7% of total company revenue.",
     colorIdx: 0,
     companyBlurb:
       "Mixpanel (mixpanel.com) is an events-based data analytics platform.",
     bullets: [
-      "Led warehouse connectors project — a web portal for customers to connect Databricks, Redshift, BigQuery, and Snowflake warehouses to Mixpanel to import data. Responsible for the full stack: React, Python/Django, MySQL.",
-      "Warehouse connectors brings in 7% of total revenue with over 5,000 successful event imports.",
-      "Designed and coded test imports feature, letting users safely import small datasets into Mixpanel for validation.",
-      "Worked closely with infrastructure engineers, product, and design to scope and ship new features.",
+      "Architected and led the high-impact warehouse connectors initiative, enabling 5,000+ enterprise customers to sync Databricks, Redshift, BigQuery, and Snowflake with Mixpanel. Engineered the end-to-end stack using React, Python/Django, and MySQL.",
+      "Directly generated 7% of total company revenue by scaling the platform to handle over 5,000 successful automated event imports.",
+      "Designed and deployed a data validation pipeline that allowed customers to safely stage and upgrade event subsets to full production imports.",
+      "Directed the technical roadmap and agile execution, cross-functionally leading product and design teams to deliver scalable data integration solutions.",
     ],
   },
   {
@@ -57,10 +61,11 @@ const EXPERIENCE = [
     colorIdx: 1,
     companyBlurb: "Affirm (affirm.com) leads the Buy Now Pay Later space.",
     bullets: [
-      "Built the brand new savings account experience on web, adding millions of dollars in assets.",
+      "Built the brand new savings account experience on the web, adding millions of dollars in assets.",
       "Created a promotion module to offer incentives to customers, increasing gross merchandise volume by an average of 26%.",
-      "Led a team of 3 engineers building internal tools to help remediate issues for 200k customers onboarded to rewards programs.",
-      "Worked closely with product and design to build four web projects on the main shop feed that generates 30% of company revenue.",
+      "Significantly reduced tech debt and code complexity, separating data logic from view logic using custom React hooks. Added ESLint and TypeScript checks to run in pull requests.",
+      "Led a team of 3 engineers building internal tools to help remediate issues for 200k customers onboarded to rewards programs. Authored tech specs, provided estimates, wrote and reviewed code, reported regular project updates, and ran user acceptance testing.",
+      "Ran four experiments on the main shop feed website that generates 30% of the company revenue.",
     ],
   },
   {
@@ -73,10 +78,11 @@ const EXPERIENCE = [
     companyBlurb:
       "Shape Security (acquired by F5) was a leader in bot-detection and fraud-prevention security.",
     bullets: [
-      "Created and maintained a React-based style and component library adopted by three different products.",
-      "Packaged an internal web-based IDE tool and integrated it into a customer-facing management application, letting customers safely modify config files.",
-      "Introduced engineering lifecycle processes: standardized design docs, code reviews, testing, standups, and retrospectives.",
-      "Added error logging to three products, providing visibility into issues in production. Mentored four junior engineers.",
+      "Engineered and maintained a React-based design system and component library, accelerating development velocity across three distinct product lines.",
+      "Launched an internal web-based IDE via NPM, enabling enterprise customers to safely modify configurations directly within management applications.",
+      "Standardized the engineering lifecycle (design docs, code reviews, testing), resulting in measurably higher code quality and team productivity.",
+      "Implemented automated error logging across the product suite, providing critical real-time visibility into production stability.",
+      "Mentored four junior engineers, fostering technical growth and best practices within the organization.",
     ],
   },
   {
@@ -89,10 +95,10 @@ const EXPERIENCE = [
     companyBlurb:
       "Manifold Technology (defunct) developed blockchain-based transaction infrastructure and applications for enterprises.",
     bullets: [
-      "Responsible for the entire web front-end — from styling to deployment.",
-      "Built and maintained scalable web applications including a commodities exchange app, influencer platform, and merchant rewards portal.",
-      "Implemented the front-end workflow, style guide, linters, and deployment process.",
-      "Ensured product quality with automated unit and integration tests.",
+      "Owned the end-to-end web frontend architecture, managing the complete lifecycle from initial design and styling to production deployment.",
+      "Architected and scaled diverse web applications, including a commodities exchange, an influencer-content creator marketplace, and a merchant rewards portal.",
+      "Standardized frontend workflows by implementing comprehensive style guides, automated linters, and robust CI/CD deployment processes.",
+      "Ensured high product reliability through the implementation of automated unit and integration testing suites.",
     ],
   },
   {
@@ -105,9 +111,21 @@ const EXPERIENCE = [
     companyBlurb:
       "Wealthfront (wealthfront.com) is an online financial advisor and automated investment service.",
     bullets: [
-      "Built the college savings accounts product in a team of 4 and launched it on schedule, adding millions in investments in the first month.",
-      "Led, coded, and launched the Advanced Indexing project, providing custom client experiences at different investment tiers.",
-      "Used data analysis to improve the signup flow, increasing traffic by 14%.",
+      "Led the successful launch of college savings accounts and Advanced Indexing projects, driving millions of dollars in new investments.",
+      "Optimized signup flow through data analysis, resulting in a 14% increase in traffic.",
+    ],
+  },
+  {
+    company: "Epic",
+    role: "Application Support Engineer",
+    period: "Apr 2012 - Feb 2014",
+    description:
+      "Developed fixes and enhancements for the Epic 2014 release. Managed a Russian localization team of 10.",
+    colorIdx: 0,
+    companyBlurb:
+      "Epic (Verona, WI) is a leading healthcare IT provider covering more than 50% of US patients.",
+    bullets: [
+      "Developed 40 documented fixes for the Epic 2014 release and managed a Russian localization team of 10.",
     ],
   },
 ];
@@ -117,31 +135,31 @@ const PROJECTS = [
     name: "advanced-metronome",
     displayName: "DrummaLlama",
     description:
-      "Drum loop machine and metronome built with Web Audio API and React.",
-    tags: ["React", "TypeScript", "Web Audio API"],
+      "Advanced metronome and beat looper built with Claude Code.",
+    tags: ["React", "TypeScript", "Web Audio API", "Claude Code"],
     colorIndex: 0,
   },
   {
     name: "saltmarsh-timeline",
     displayName: "Saltmarsh Timeline",
     description:
-      "Interactive D&D campaign timeline tool with visual event tracking.",
-    tags: ["React", "TypeScript", "D&D"],
+      "D&D events timeline built with React and GraphQL.",
+    tags: ["React", "TypeScript", "GraphQL"],
     colorIndex: 1,
   },
   {
     name: "eataburrita-native",
     displayName: "Eat-a-Burrita",
     description:
-      "Native Android companion app built with Kotlin and Material Design.",
-    tags: ["Kotlin", "Android", "Mobile"],
+      "Burrito locator app built with Kotlin and Jetpack Compose.",
+    tags: ["Kotlin", "Android", "Jetpack Compose"],
     colorIndex: 2,
   },
   {
     name: "battle-dice-web",
     displayName: "Battle Dice",
     description:
-      "Real-time multiplayer dice battle game with WebSocket state sync.",
+      "Real-time multiplayer dice game using WebSockets.",
     tags: ["React", "WebSockets", "TypeScript"],
     colorIndex: 3,
   },
@@ -303,11 +321,13 @@ export function Portfolio() {
           <p className="section-label">About</p>
           <h2 className="section-title">Background</h2>
           <p className="about-text">
-            Full-stack software engineer with 10+ years of experience building
-            web applications, mobile apps, and real-time systems. I care about
-            clean architecture, good developer experience, and shipping things
-            that work. Outside of professional work, I explore audio
-            programming, game tooling, and native Android development.
+            Senior Full-Stack Engineer with 10+ years of experience driving
+            multi-million dollar revenue growth through expert API design,
+            high-performance React UIs, and AI-driven automation. I bridge
+            complex data systems with seamless customer experiences, delivering
+            scalable features that serve thousands of enterprise clients.
+            Outside of work I explore game development with UE5, Android apps,
+            and audio programming.
           </p>
         </div>
       </section>

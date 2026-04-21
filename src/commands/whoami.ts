@@ -5,26 +5,40 @@ export function whoami(): CommandResult {
     lines: [
       { type: "success", content: "visitor@ytolstyk" },
       { type: "output", content: "" },
-      { type: "output", content: "Yuriy Tolstykh — Software Engineer" },
+      { type: "output", content: "Yuriy Tolstykh — Senior Software Engineer" },
       { type: "output", content: "" },
       {
         type: "output",
         content:
-          "Full-stack engineer with focus on web development. I build web, mobile, and game tooling.",
+          "Senior Full-Stack Engineer with 10+ years driving revenue growth through",
       },
       {
         type: "output",
         content:
-          "Passionate about maintainable code, product that makes sense to users, and beautiful UIs.",
+          "expert API design, high-performance React UIs, and AI-driven automation.",
+      },
+      {
+        type: "output",
+        content:
+          "Collaborative technical leader — mentoring engineers, architecting internal",
+      },
+      {
+        type: "output",
+        content:
+          "tools, and optimizing engineering lifecycles for maximum productivity.",
       },
       { type: "output", content: "" },
       {
         type: "output",
-        content: "Languages: TypeScript, Node.js, Python, Ruby",
+        content: "Languages: TypeScript, JavaScript, Python, Ruby, Kotlin",
       },
       {
         type: "output",
-        content: "Stack:     React, Express, Django, Rails, Vite",
+        content: "Stack:     React, Django, Rails, Node.js, GraphQL, Vite",
+      },
+      {
+        type: "output",
+        content: "AI:        LLMs, Claude Code, AI Agents, MCP",
       },
       { type: "output", content: "GitHub:    https://github.com/ytolstyk" },
       { type: "output", content: "" },
