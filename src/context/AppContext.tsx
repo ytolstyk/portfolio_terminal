@@ -7,8 +7,18 @@ interface AppContextValue {
 
 const AppContext = createContext<AppContextValue | null>(null)
 
+const QUIET_PARAMS = new Set(['boring', 'minimal', 'simple', 'quiet', 'noterminal'])
+
+function shouldSuppressTerminal() {
+  const params = new URLSearchParams(window.location.search)
+  for (const key of params.keys()) {
+    if (QUIET_PARAMS.has(key.toLowerCase())) return true
+  }
+  return false
+}
+
 export function AppProvider({ children }: { children: ReactNode }) {
-  const [terminalVisible, setTerminalVisible] = useState(true)
+  const [terminalVisible, setTerminalVisible] = useState(() => !shouldSuppressTerminal())
   return (
     <AppContext.Provider value={{ terminalVisible, setTerminalVisible }}>
       {children}
